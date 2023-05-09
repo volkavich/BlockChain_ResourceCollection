@@ -2,11 +2,11 @@ from collections import defaultdict
 from typing import List, Tuple
 
 def calculate_quota(total_votes: int, num_seats: int) -> float:
-    """Calculate the quota for SuperHare."""
+    #Calculate the quota for SuperHare.
     return total_votes / num_seats + 1
 
 def distribute_surplus_votes(candidate_votes: float, quota: float) -> Tuple[float, defaultdict]:
-    """Distribute surplus votes to other candidates."""
+    #Distribute surplus votes to other candidates.
     surplus = candidate_votes - quota
     redistributed_votes = defaultdict(float)
     if surplus > 0:
@@ -20,7 +20,7 @@ def distribute_surplus_votes(candidate_votes: float, quota: float) -> Tuple[floa
     return candidate_votes, redistributed_votes
 
 def eliminate_candidate(candidate_id: int, candidate_votes: float, candidate_preferences: List[List[int]]) -> Tuple[float, defaultdict]:
-    """Eliminate a candidate and transfer their votes to other candidates."""
+    #Eliminate a candidate and transfer their votes to other candidates.
     redistributed_votes = defaultdict(float)
     for pref_list in candidate_preferences:
         if candidate_id in pref_list:
@@ -32,11 +32,11 @@ def eliminate_candidate(candidate_id: int, candidate_votes: float, candidate_pre
     return candidate_votes, redistributed_votes
 
 def calculate_vote_values(candidate_votes: float, num_seats_won: int) -> float:
-    """Calculate the vote value of a candidate."""
+    #Calculate the vote value of a candidate.
     return candidate_votes / (num_seats_won + 1)
 
 def superhare(candidate_votes: List[float], candidate_preferences: List[List[int]], num_seats: int) -> List[int]:
-    """Perform SuperHare algorithm to elect candidates."""
+    #Perform SuperHare algorithm to elect candidates.
     num_candidates = len(candidate_votes)
     quota = calculate_quota(sum(candidate_votes), num_seats)
     elected_candidates = []
